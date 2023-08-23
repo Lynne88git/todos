@@ -34,15 +34,15 @@ class TodoController {
 
     public function create(Todo $todo) : bool {
         $this->todos[] = $todo;
-        return $this->saveData($todo->id);
+        return $this->saveData();
     }
 
     public function update(string $id, Todo $todo) : bool {
         foreach ($this->todos as &$existingTodo) {
             if ($existingTodo->id == $id) {
                 $existingTodo = $todo;
-                if ($this->saveData($id)) {
-                    http_response_code(200);
+                if ($this->saveData()) {
+                    http_response_code(200); // Updated successfully
     
                     // Send the updated todo as JSON response
                     echo json_encode(['updatedTodo' => $existingTodo]);

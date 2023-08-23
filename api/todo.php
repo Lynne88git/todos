@@ -29,8 +29,8 @@ try {
         case 'POST':
             $todoData = json_decode($body);
             $id = $path[$pathCount - 1];
-            if($todoData && isset($todoData->title)&& isset($todoData->description)){
-                $newTodo = new Todo('', $todoData->title, $todoData->description, false);
+            if($todoData && isset($todoData->id) && isset($todoData->title)&& isset($todoData->description)){
+                $newTodo = new Todo($todoData->id, $todoData->title, $todoData->description, false);
                 if($controller->create($newTodo)) {
                     http_response_code(201); //Created successfully
                     die();

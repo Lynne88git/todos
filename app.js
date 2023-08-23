@@ -32,7 +32,7 @@ function putTodo(todo) {
 }
 
 function postTodo(todo) {
-    fetch(window.location.href + 'api/todo/', {
+    fetch(window.location.href + 'api/todo/' + todo.id , {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -43,7 +43,7 @@ function postTodo(todo) {
         if (response.ok) {
             todos.push(todo);
             localStorage.setItem('todos', JSON.stringify(todos));
-            console.log("New Todo created with ID:", todo.id, "and this is the new Todo array of info", todo);
+            console.log("New Todo created with ID:", todo.id, "and this is the new Todo array of info", todos);
             console.log("Todo created successfully");
         } else {
             console.error("Failed to create todo");
